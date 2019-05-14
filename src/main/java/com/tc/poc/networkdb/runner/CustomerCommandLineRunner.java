@@ -19,7 +19,7 @@ public class CustomerCommandLineRunner implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Stream.of("Kentucky Brunch Brand Stout", "Good Morning", "Very Hazy", "King Julius",
                 "Budweiser", "Coors Light", "PBR").forEach(name ->
-                repository.save(new Customer(name))
+                repository.saveAndFlush(new Customer(name))
         );
 		repository.findAll().forEach(System.out::println);
 	}

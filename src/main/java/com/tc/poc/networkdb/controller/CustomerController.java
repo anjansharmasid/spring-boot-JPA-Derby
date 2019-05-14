@@ -60,9 +60,13 @@ public class CustomerController {
 	    }
 	    
 	    private void populateAgain() {
+	    	try {
 	    	Stream.of("Kent Brunch", "GoodDay", "Hazy", "Julius",
 	                "Budwei", "Coor", "PBRMOR").forEach(name ->
-	                repository.save(new Customer(name)));
-	    
+	                repository.saveAndFlush(new Customer(name)));
+	    	}
+	    	catch(Exception e) {
+	    		System.out.println(e.getCause().getMessage());
+	    	}
 	    }
 }
